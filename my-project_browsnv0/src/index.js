@@ -1,24 +1,23 @@
+import "./index.css";
+import App from "./App";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import "./index.css";
-import App from "./App";
 
-import reportWebVitals from "./reportWebVitals";
-import TherdPage from "./TherdPage";
-import SecondPage from "./SecondPage";
 import NavBar from "./NavBar";
+import SecondPage from "./SecondPage";
+import TherdPage from "./TherdPage";
+import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
+    <NavBar />
     <App />
 
     <TherdPage></TherdPage>
 
     <SecondPage />
-
-    <NavBar />
   </React.StrictMode>
 );
 
