@@ -8,6 +8,7 @@ import NavBar from "./NavBar";
 import SecondPage from "./SecondPage";
 import TherdPage from "./TherdPage";
 import reportWebVitals from "./reportWebVitals";
+import Main from "./main";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -18,6 +19,8 @@ root.render(
     <TherdPage></TherdPage>
 
     <SecondPage />
+
+    <Main></Main>
   </React.StrictMode>
 );
 
