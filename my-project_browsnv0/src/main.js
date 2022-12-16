@@ -12,6 +12,18 @@ function Main() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
       />
+
+      <motion.button
+        className="bg-sky-900 w-1/5 h-1/5 rounded-3xl"
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+      />
+
+      <motion.div
+        className="bg-sky-800 w-1/5 h-1/5 rounded-3xl"
+        drag
+        dragConstraints={{ left: -100, top: -100, right: 50, bottom: 50 }}
+      />
     </div>
   );
 }
