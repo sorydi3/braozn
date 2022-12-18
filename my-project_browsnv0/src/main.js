@@ -5,7 +5,7 @@ import { useState } from "react";
 function Main() {
   const [count, setCount] = useState(0);
   return (
-    <div className=" flex flex-row bg-sky-200 h-screen place-items-center ">
+    <div className=" flex flex-shrink-0 bg-sky-200 h-screen place-items-center ">
       <motion.div
         className="bg-sky-300 w-1/2 h-1/2 rounded-3xl"
         initial={{ opacity: 0, scale: 0.5 }}
@@ -20,6 +20,7 @@ function Main() {
       />
 
       <motion.div
+        layout
         className="bg-sky-800 w-1/5 h-1/5 rounded-3xl"
         drag
         dragConstraints={{ left: -100, top: -100, right: 50, bottom: 50 }}

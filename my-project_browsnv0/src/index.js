@@ -9,6 +9,7 @@ import SecondPage from "./SecondPage";
 import TherdPage from "./TherdPage";
 import reportWebVitals from "./reportWebVitals";
 import Main from "./main";
+import FourthPage from "./FourthPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -17,10 +18,9 @@ root.render(
     <App />
 
     <TherdPage></TherdPage>
-
     <SecondPage />
-
     <Main></Main>
+    <FourthPage />
   </React.StrictMode>
 );
 
