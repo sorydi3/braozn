@@ -10,17 +10,18 @@ import TherdPage from "./TherdPage";
 import reportWebVitals from "./reportWebVitals";
 import Main from "./main";
 import FourthPage from "./FourthPage";
+import FithPage from "./FithPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <NavBar />
     <App />
-
     <TherdPage></TherdPage>
     <SecondPage />
     <Main></Main>
     <FourthPage />
+    <FithPage />
   </React.StrictMode>
 );
 
