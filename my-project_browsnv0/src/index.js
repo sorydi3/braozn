@@ -15,12 +15,6 @@ import FithPage from "./FithPage";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <NavBar />
-    <App />
-    <TherdPage></TherdPage>
-    <SecondPage />
-    <Main></Main>
-    <FourthPage />
     <FithPage />
   </React.StrictMode>
 );
@@ -29,3 +23,12 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+/*
+<NavBar />
+    <App />
+    <TherdPage></TherdPage>
+    <SecondPage />
+    <Main></Main>
+    <FourthPage />
+**/
