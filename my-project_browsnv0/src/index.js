@@ -11,11 +11,13 @@ import reportWebVitals from "./reportWebVitals";
 import Main from "./main";
 import FourthPage from "./FourthPage";
 import FithPage from "./FithPage";
+import Sistth from "./Sistth";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <FithPage />
+    <Sistth />
   </React.StrictMode>
 );
 
