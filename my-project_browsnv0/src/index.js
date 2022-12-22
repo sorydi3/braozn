@@ -14,12 +14,31 @@ import FithPage from "./FithPage";
 import Sistth from "./Sistth";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <React.StrictMode>
-    <FithPage />
-    <Sistth />
-  </React.StrictMode>
+
+const people = ["John", "Paul", "George", "Ringo"];
+
+const element = (
+  <ol className="m-14">
+    {" "}
+    {people.map((person, index) => (
+      <li key={index}>{person}</li>
+    ))}{" "}
+  </ol>
 );
+
+const MyComponent = () => {
+  const people = ["John", "Paul", "George", "Ringo"];
+  return (
+    <ol className="m-14">
+      {" "}
+      {people.map((person, index) => (
+        <li key={index}>{person}</li>
+      ))}{" "}
+    </ol>
+  );
+};
+
+root.render(<MyComponent />);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
@@ -27,10 +46,14 @@ root.render(
 reportWebVitals();
 
 /*
-<NavBar />
-    <App />
-    <TherdPage></TherdPage>
-    <SecondPage />
-    <Main></Main>
-    <FourthPage />
+ <React.StrictMode>
+      <NavBar />
+      <App />
+      <TherdPage></TherdPage>
+      <SecondPage />
+      <Main></Main>
+      <FourthPage />
+      <FithPage />
+      <Sistth />
+  </React.StrictMode>
 **/
