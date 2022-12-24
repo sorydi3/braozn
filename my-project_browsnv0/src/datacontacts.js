@@ -17,6 +17,54 @@ const contacts = [
     handle: "tylermcginnis",
     avatarURL: "http://localhost:5001/tyler.jpg",
   },
+  {
+    id: "richard",
+    name: "Richard Kalehoff",
+    handle: "richardkalehoff",
+    avatarURL: "http://localhost:5001/richard.jpg",
+  },
+  {
+    id: "tyler",
+    name: "Tyler McGinnis",
+    handle: "tylermcginnis",
+    avatarURL: "http://localhost:5001/tyler.jpg",
+  },
+  {
+    id: "richard",
+    name: "Richard Kalehoff",
+    handle: "richardkalehoff",
+    avatarURL: "http://localhost:5001/richard.jpg",
+  },
+  {
+    id: "tyler",
+    name: "Tyler McGinnis",
+    handle: "tylermcginnis",
+    avatarURL: "http://localhost:5001/tyler.jpg",
+  },
+  {
+    id: "richard",
+    name: "Richard Kalehoff",
+    handle: "richardkalehoff",
+    avatarURL: "http://localhost:5001/richard.jpg",
+  },
+  {
+    id: "tyler",
+    name: "Tyler McGinnis",
+    handle: "tylermcginnis",
+    avatarURL: "http://localhost:5001/tyler.jpg",
+  },
+  {
+    id: "richard",
+    name: "Richard Kalehoff",
+    handle: "richardkalehoff",
+    avatarURL: "http://localhost:5001/richard.jpg",
+  },
+  {
+    id: "tyler",
+    name: "Tyler McGinnis",
+    handle: "tylermcginnis",
+    avatarURL: "http://localhost:5001/tyler.jpg",
+  },
 ];
 
 export default contacts;

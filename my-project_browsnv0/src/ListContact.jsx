@@ -8,12 +8,12 @@ function handleDelete(id) {
 export default function ListContact({ contacts, onEdit, onDelete }) {
     console.log(contacts);
     return(
-        <div className="contact-list selection:flex flex-col justify-center items-center" >
+        <div className="contact-list selection:flex flex-col flex-grow justify-center items-center" >
             <ol className=" px-10 py-10">
                 {contacts.map((contact) => 
                     (<li key={contact.id} className="h-20  relative my-5 divide-x divide-solid  bg-slate-200 rounded-lg shadow-lg">
                         
-                        <div className="bg-hero bg-fixed left-0 inset-y-0 bg-cover h-15 w-16 rounded-full bg-green-300 m-2 absolute"></div>
+                        <div className="bg-hero left-0 inset-y-0 bg-cover h-15 w-16 rounded-full bg-green-300 m-2 absolute"></div>
 
                         <div className="divider w-0.5 ml-1.5 h-13 absolute bg-slate-300 left-20 inset-y-4 rounded-lg"></div>
 
