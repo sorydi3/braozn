@@ -31,3 +31,24 @@ export default function Contact() {
     </div>
   );
 }
+
+/*    Split Screen Layout width on large screens and full width on small screens
+      
+
+<div class="container w-full h-screen flex flex-col md:flex-row">
+  <div id="learn" class="split md:w-1/2 w-full flex-grow">
+    <div>
+      <h1>Learn</h1>
+      <p>Build your skillset with the hottest courses</p>
+      <a href="#">Start Learning</a>
+    </div>
+  </div>
+  <div id="teach" class="split md:w-1/2 w-full flex-grow">
+    <div>
+      <h1>Teach</h1>
+      <p>Share your knowledge and earn some income</p>
+      <a href="#">Start Teaching</a>
+    </div>
+  </div>
+</div>
+*/
