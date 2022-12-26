@@ -1,3 +1,62 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/fork-awesome/1.2.0/css/fork-awesome.min.css");
+
+@layer utilities {
+    .basis-20 {
+      flex-basis: 5rem;
+    }
+}
+
+@layer base {
+    body {
+      @apply text-gray-700;
+    }
+}
+  
+@layer components {
+
+    .background {
+      @apply bg-gray-100 h-full w-screen;
+    }
+
+    .container {
+      @apply m-8 max-w-sm;
+    }
+
+    .card {
+      @apply bg-white flex flex-col md:flex-row md:even:flex-row-reverse shadow-lg rounded-lg mx-10 my-2;
+    }
+
+    h1{
+        @apply font-bold text-gray-800  text-9xl;
+    }
+
+    p{
+        @apply text-gray-600;
+    }
+
+    .icon {
+        @apply mx-1 w-12 h-12 bg-gray-700 text-white rounded-full;
+      }
+
+      i.fa {
+        @apply text-2xl;
+      }
+}
+
+@layer utilities{
+    .basis-25 {
+      flex-basis: 6.25rem;
+    }
+
+    .basis-60 {
+      flex-basis: 15rem;
+    }
+
+    .basis-1\/3 {
+        flex-basis: 33.333333%;
+    }
+}
