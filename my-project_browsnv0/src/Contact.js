@@ -34,16 +34,10 @@ function SearchFilter(setContacts, search, contacts, setFiltered) {
     setContacts(contacts);
   } else {
     console.log(search);
-
     let filteredContacts = contacts.filter((contact) => {
-      console.log(contact);
-      console.log(contact.name.toLowerCase());
-      console.log(search.toLowerCase());
       return contact.name.toLowerCase().includes(search.toLowerCase());
     });
-
     setFiltered(filteredContacts);
-    console.log("filteredContacts found: " + filteredContacts.length);
     return filteredContacts;
   }
 }
@@ -54,15 +48,10 @@ export default function Contact() {
   const handleOnClose = () => setVisible(false);
   const handleOnOpen = () => setVisible(true);
   const [contacts, setContacts] = useState(CContacts);
-  let filteredContacts = [];
   const [filtered, setFiltered] = useState([]);
   useEffect(() => {
-    filteredContacts = SearchFilter(setContacts, search, contacts, setFiltered);
-    
+    SearchFilter(setContacts, search, contacts, setFiltered);
   }, [search]);
-
-  console.log(filteredContacts);
-  //console.log(search);
 
   function onRemoveContact(id) {
     setContacts(contacts.filter((c) => c.id !== id));
