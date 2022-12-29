@@ -32,18 +32,17 @@ function SecondPage() {
         </button>
       </form>
 
-
       <ul className="hover:overflow-y-auto h-full">
-      <CustomScroll heightRelativeToParent="100%">
-        {fruits.map((item) => (
-          <li
-            className=" grid ml-14 w-60 bg-amber-200 m-5 text-center rounded-xl place-items-center h-20 hover:bg-amber-500"
-            key={item}
-          >
-            {item}
-          </li>
-        ))}
-      </CustomScroll>
+        <CustomScroll heightRelativeToParent="100%">
+          {fruits.map((item) => (
+            <li
+              className=" grid ml-14 w-60 bg-amber-200 m-5 text-center rounded-xl place-items-center h-20 hover:bg-amber-500"
+              key={item}
+            >
+              {item}
+            </li>
+          ))}
+        </CustomScroll>
       </ul>
     </div>
   );
