@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 
 function handleDelete(id) {
@@ -29,4 +30,12 @@ export default function ListContact({contacts,onOpenModal,onRemoveContact}) {
         </div>
         
     );
+}
+
+
+// PropTypes is a library that helps us to validate the props that we are passing to our components are correct.
+ListContact.propTypes = {
+    contacts: PropTypes.array.isRequired,
+    onOpenModal: PropTypes.func.isRequired,
+    onRemoveContact: PropTypes.func.isRequired
 }
