@@ -11,6 +11,7 @@ function handleOnOpen(setVisible) {
 function SearchFilter(setContacts, search, contacts, setFiltered) {
   if (search === "") {
     setContacts(contacts);
+    setFiltered([]);
   } else {
     let filteredContacts = contacts.filter((contact) => {
       return contact.name.toLowerCase().includes(search.toLowerCase());
@@ -44,6 +45,24 @@ export default function Contact() {
             + add
           </button>
         </div>
+
+        <div className="flex justify-center items-center ">
+          {search !== "" ? (
+            <p>
+              Now showing {filtered.length} of {contacts.length}.
+              <button
+                className="bg-inherit text-sky-500 ml-2 underline"
+                onClick={() => setSearch("")}
+              >
+                {" "}
+                View all
+              </button>
+            </p>
+          ) : (
+            <p> Now showing {contacts.length} contacts.</p>
+          )}
+        </div>
+
         <ListContact
           contacts={search === "" ? contacts : filtered}
           onOpenModal={handleOnOpen}
