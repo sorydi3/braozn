@@ -38,7 +38,12 @@ export default function Contact() {
   return (
     <div className="flex flex-col w-screen h-screen">
       <div className="h-screen w-screen flex flex-col bg-slate-100 relative">
-        <SearchComponent onSearch={setSearch} />
+        <div className="flex">
+          <SearchComponent onSearch={setSearch} />
+          <button className="bg-blue-600 hover:bg-blue-400 text-white rounded-lg font-bold flex-shrink-0 w-20 h-10 m-auto mr-2">
+            + add
+          </button>
+        </div>
         <ListContact
           contacts={search === "" ? contacts : filtered}
           onOpenModal={handleOnOpen}
