@@ -13,12 +13,13 @@ import FourthPage from "./FourthPage";
 import FithPage from "./FithPage";
 import Sistth from "./Sistth";
 import Contact from "./Contact";
+import Mainn from "./Main2";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <Contact />
+    <Mainn />
   </React.StrictMode>
 );
 
@@ -29,6 +30,7 @@ reportWebVitals();
 
 /*
  <React.StrictMode>
+      <Contact />
       <NavBar />
       <App />
       <TherdPage></TherdPage>
