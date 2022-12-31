@@ -14,7 +14,7 @@ export default function SideBar({ children }) {
         <div className="h-1 rounded-lg w-44 m-auto bg-slate-400"></div>
 
         <div className="h-1 rounded-lg w-44 m-auto bg-slate-400"></div>
-        <div className="h-1 rounded-lg w-44 m-auto bg-slate-400"></div>
+        <div className="h-1 rounded-lg w-44 m-auto bg-white"></div>
     </div>
   );
 }
