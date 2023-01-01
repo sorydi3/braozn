@@ -15,6 +15,7 @@ import Sistth from "./Sistth";
 import Contact from "./Contact";
 import Mainn from "./Main2";
 
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
@@ -32,6 +33,7 @@ reportWebVitals();
  <React.StrictMode>
       <Contact />
       <NavBar />
+      <Contact />
       <App />
       <TherdPage></TherdPage>
       <SecondPage />
