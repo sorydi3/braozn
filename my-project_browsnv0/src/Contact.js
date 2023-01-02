@@ -3,6 +3,7 @@ import Contacts from "./datacontacts";
 import ListContact from "./ListContact";
 import SearchComponent from "./SearchComponent";
 import DetailsModal from "./DetailsModal";
+import CreateContact from "./CreateContact";
 
 function handleOnOpen(setVisible) {
   setVisible(true);
@@ -23,6 +24,7 @@ function SearchFilter(setContacts, search, contacts, setFiltered) {
 
 export default function Contact() {
   const [visible, setVisible] = useState(false);
+  const [visibleForm, setVisibleForm] = useState(false);
   const [search, setSearch] = useState("");
   const handleOnClose = () => setVisible(false);
   const handleOnOpen = () => setVisible(true);
@@ -35,12 +37,12 @@ export default function Contact() {
   /* Fetch Contacts */
 
   /*
-  useEffect(() => {
-    const getContacts = async () => {
-      const contactsFromServer = await fetchContacts();
-      setContacts(contactsFromServer);
-    };
-  }, []);
+    useEffect(() => {
+      const getContacts = async () => {
+        const contactsFromServer = await fetchContacts();
+        setContacts(contactsFromServer);
+      };
+    }, []);
 
   */
 
@@ -53,7 +55,10 @@ export default function Contact() {
       <div className="h-screen w-screen flex flex-col bg-slate-100 relative">
         <div className="flex">
           <SearchComponent onSearch={setSearch} />
-          <button className="bg-blue-600 hover:bg-blue-400 text-white rounded-lg font-bold flex-shrink-0 w-20 h-10 m-auto mr-2">
+          <button
+            className="bg-blue-600 hover:bg-blue-400 text-white rounded-lg font-bold flex-shrink-0 w-20 h-10 m-auto mr-2"
+            onClick={() => setVisibleForm(true)}
+          >
             + add
           </button>
         </div>
@@ -82,6 +87,7 @@ export default function Contact() {
         />
       </div>
       <DetailsModal visiblee={visible} onClose={handleOnClose} />
+      <CreateContact visible={visibleForm} />
     </div>
   );
 }
