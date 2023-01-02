@@ -5,10 +5,6 @@ import SearchComponent from "./SearchComponent";
 import DetailsModal from "./DetailsModal";
 import CreateContact from "./CreateContact";
 
-function handleOnOpen(setVisible) {
-  setVisible(true);
-}
-
 function SearchFilter(setContacts, search, contacts, setFiltered) {
   if (search === "") {
     setContacts(contacts);
@@ -33,6 +29,8 @@ export default function Contact() {
   useEffect(() => {
     SearchFilter(setContacts, search, contacts, setFiltered);
   }, [search]);
+
+  const handleOnCloseContact = () => setVisibleForm(false);
 
   /* Fetch Contacts */
 
@@ -87,7 +85,7 @@ export default function Contact() {
         />
       </div>
       <DetailsModal visiblee={visible} onClose={handleOnClose} />
-      <CreateContact visible={visibleForm} />
+      <CreateContact visible={visibleForm} onClose={handleOnCloseContact} />
     </div>
   );
 }
