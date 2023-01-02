@@ -32,6 +32,18 @@ export default function Contact() {
     SearchFilter(setContacts, search, contacts, setFiltered);
   }, [search]);
 
+  /* Fetch Contacts */
+
+  /*
+  useEffect(() => {
+    const getContacts = async () => {
+      const contactsFromServer = await fetchContacts();
+      setContacts(contactsFromServer);
+    };
+  }, []);
+
+  */
+
   function onRemoveContact(id) {
     setContacts(contacts.filter((c) => c.id !== id));
   }
