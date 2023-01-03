@@ -1,11 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-
-function handleDelete(id) {
-    console.log(id);
-}
-
 export default function ListContact({contacts,onOpenModal,onRemoveContact}) {
     
     return(

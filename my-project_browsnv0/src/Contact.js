@@ -4,6 +4,7 @@ import ListContact from "./ListContact";
 import SearchComponent from "./SearchComponent";
 import DetailsModal from "./DetailsModal";
 import CreateContact from "./CreateContact";
+import NavBar from "./NavBarContact";
 
 function SearchFilter(setContacts, search, contacts, setFiltered) {
   if (search === "") {
@@ -31,15 +32,13 @@ export default function Contact() {
   }, [search]);
 
   const handleOnCloseContact = () => {
-    setVisibleForm(false)
-    
+    setVisibleForm(false);
   };
   /* Fetch Contacts */
 
   const fetchContacts = async () => {
     const res = await fetch("http://localhost:8080/contacts");
     const data = await res.json();
-    console.log(data);
     return data;
   };
 
@@ -49,7 +48,7 @@ export default function Contact() {
       setContacts(contactsFromServer);
     };
     getContacts();
-  }, []);
+  }, [contacts]);
 
   function onRemoveContact(id) {
     setContacts(contacts.filter((c) => c.id !== id));
@@ -60,12 +59,6 @@ export default function Contact() {
       <div className="h-screen w-screen flex flex-col bg-slate-100 relative">
         <div className="flex">
           <SearchComponent onSearch={setSearch} />
-          <button
-            className="bg-blue-600 hover:bg-blue-400 text-white rounded-lg font-bold flex-shrink-0 w-20 h-10 m-auto mr-2"
-            onClick={() => setVisibleForm(true)}
-          >
-            + add
-          </button>
         </div>
 
         <div className="flex justify-center items-center ">
@@ -90,6 +83,12 @@ export default function Contact() {
           onOpenModal={handleOnOpen}
           onRemoveContact={onRemoveContact}
         />
+        <button
+          className="bg-blue-600 z-10 fixed inset-x-2 bottom-2 hover:bg-blue-400 text-white rounded-lg font-bold flex-shrink-0 w-20 h-10 m-auto mr-2"
+          onClick={() => setVisibleForm(true)}
+        >
+          + add
+        </button>
       </div>
       <DetailsModal visiblee={visible} onClose={handleOnClose} />
       <CreateContact visible={visibleForm} onClose={handleOnCloseContact} />

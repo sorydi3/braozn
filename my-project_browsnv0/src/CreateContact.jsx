@@ -20,9 +20,7 @@ function CreateContact(props) {
     const [handle, setHandle] = useState("");
 
     const disableButton = nom === "" || handle === "" || telefon === "" || email === "";
-    console.log(disableButton);
-
-
+    
     const postContact = async () => {
         const response = await fetch('http://localhost:8080/contact', {
             method: 'POST',
@@ -36,9 +34,6 @@ function CreateContact(props) {
                 email: email
             })
         });
-        const data = await response.json();
-        console.log(data);
-        console.log(props);
         props.onClose();
     }
 
@@ -53,7 +48,7 @@ function CreateContact(props) {
     if (!props.visible) return null;
 
     return (
-    <div className= "modal fixed inset-0 bg-black bg-opacity-80 backdrop-blur-sm flex justify-center items-center">
+    <div className= "modal fixed inset-0 bg-black bg-opacity-80 backdrop-blur-sm flex justify-center items-center" onClick={() => props.onClose()}>
         <div className="modal-content flex bg-white p-2 rounded-lg shadow-lg ">
             <div className='grid grid-cols-1'>
                 <div className='h-28 w-28 bg-amber-500 m-auto rounded-full shadow-lg'></div>
