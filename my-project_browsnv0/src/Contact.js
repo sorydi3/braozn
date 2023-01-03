@@ -30,19 +30,26 @@ export default function Contact() {
     SearchFilter(setContacts, search, contacts, setFiltered);
   }, [search]);
 
-  const handleOnCloseContact = () => setVisibleForm(false);
-
+  const handleOnCloseContact = () => {
+    setVisibleForm(false)
+    
+  };
   /* Fetch Contacts */
 
-  /*
-    useEffect(() => {
-      const getContacts = async () => {
-        const contactsFromServer = await fetchContacts();
-        setContacts(contactsFromServer);
-      };
-    }, []);
+  const fetchContacts = async () => {
+    const res = await fetch("http://localhost:8080/contacts");
+    const data = await res.json();
+    console.log(data);
+    return data;
+  };
 
-  */
+  useEffect(() => {
+    const getContacts = async () => {
+      const contactsFromServer = await fetchContacts();
+      setContacts(contactsFromServer);
+    };
+    getContacts();
+  }, []);
 
   function onRemoveContact(id) {
     setContacts(contacts.filter((c) => c.id !== id));
