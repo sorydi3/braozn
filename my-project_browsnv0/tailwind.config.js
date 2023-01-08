@@ -5,9 +5,9 @@ module.exports = {
     extend: {
       backgroundImage: {
         hero: "url('../public/girl.jpg')",
+        redbull: "url('../public/red-logo.png')",
       },
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [require("@tailwindcss/typography"), require("@tailwindcss/forms")],
 };
-  

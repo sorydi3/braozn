@@ -3,10 +3,8 @@ import Contacts from "./datacontacts";
 import ListContact from "./ListContact";
 import SearchComponent from "./SearchComponent";
 import DetailsModal from "./DetailsModal";
-
-function handleOnOpen(setVisible) {
-  setVisible(true);
-}
+import CreateContact from "./CreateContact";
+import NavBar from "./NavBarContact";
 
 function SearchFilter(setContacts, search, contacts, setFiltered) {
   if (search === "") {
@@ -23,6 +21,7 @@ function SearchFilter(setContacts, search, contacts, setFiltered) {
 
 export default function Contact() {
   const [visible, setVisible] = useState(false);
+  const [visibleForm, setVisibleForm] = useState(false);
   const [search, setSearch] = useState("");
   const handleOnClose = () => setVisible(false);
   const handleOnOpen = () => setVisible(true);
@@ -31,6 +30,25 @@ export default function Contact() {
   useEffect(() => {
     SearchFilter(setContacts, search, contacts, setFiltered);
   }, [search]);
+
+  const handleOnCloseContact = () => {
+    setVisibleForm(false);
+  };
+  /* Fetch Contacts */
+
+  const fetchContacts = async () => {
+    const res = await fetch("http://localhost:8080/contacts");
+    const data = await res.json();
+    return data;
+  };
+
+  useEffect(() => {
+    const getContacts = async () => {
+      const contactsFromServer = await fetchContacts();
+      setContacts(contactsFromServer);
+    };
+    getContacts();
+  }, [contacts]);
 
   function onRemoveContact(id) {
     setContacts(contacts.filter((c) => c.id !== id));
@@ -41,9 +59,6 @@ export default function Contact() {
       <div className="h-screen w-screen flex flex-col bg-slate-100 relative">
         <div className="flex">
           <SearchComponent onSearch={setSearch} />
-          <button className="bg-blue-600 hover:bg-blue-400 text-white rounded-lg font-bold flex-shrink-0 w-20 h-10 m-auto mr-2">
-            + add
-          </button>
         </div>
 
         <div className="flex justify-center items-center ">
@@ -68,8 +83,15 @@ export default function Contact() {
           onOpenModal={handleOnOpen}
           onRemoveContact={onRemoveContact}
         />
+        <button
+          className="bg-blue-600 z-10 fixed inset-x-2 bottom-2 hover:bg-blue-400 text-white rounded-lg font-bold flex-shrink-0 w-20 h-10 m-auto mr-2"
+          onClick={() => setVisibleForm(true)}
+        >
+          + add
+        </button>
       </div>
       <DetailsModal visiblee={visible} onClose={handleOnClose} />
+      <CreateContact visible={visibleForm} onClose={handleOnCloseContact} />
     </div>
   );
 }
