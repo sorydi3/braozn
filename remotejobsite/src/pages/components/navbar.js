@@ -1,3 +1,4 @@
+import Link from "next/link";
 import NavBarItem from "./navbaritem";
 
 function NavBar() {
@@ -12,11 +13,25 @@ function NavBar() {
         />
       </div>
       <div className="mr-auto left-16  top-3 md:fixed hidden md:flex space-x-5">
-        <NavBarItem name="Home" focused={true} />
-        <NavBarItem name="Jobs" />
-        <NavBarItem name="Companies" />
-        <NavBarItem name="About" />
-        <NavBarItem name="Contact" />
+        <Link href="\">
+          <NavBarItem name="Home" focused={true} />
+        </Link>
+
+        <Link href="contact">
+          <NavBarItem name="Contact" />
+        </Link>
+
+        <Link href="about">
+          <NavBarItem name="About" />
+        </Link>
+
+        <Link href="companies">
+          <NavBarItem name="Companies" />
+        </Link>
+
+        <Link href="jobs">
+          <NavBarItem name="Jobs" />
+        </Link>
       </div>
 
       <div className="md:hidden flex flex-col space-y-2"></div>
