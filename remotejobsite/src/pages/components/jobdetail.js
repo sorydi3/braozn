@@ -94,11 +94,9 @@ Job Salary
 <blockquote>
     some text here
 </blockquote>
-
-
 `;
   return (
-    <div className="fixed my-auto bg-white p-3 rounded-lg right-10 top-1/4 left-96 bottom-2 scrollbar-thin  scrollbar-corner-rounded-xl scrollbar-thumb-slate-400">
+    <div className=" bg-white p-6 pt-5 rounded-lg md:flex-grow scrollbar-thin m-10 scrollbar-corner-rounded-xl mt-32 md:mt-20 scrollbar-thumb-slate-400">
       <ReactMarkdown>{markdown}</ReactMarkdown>
     </div>
   );

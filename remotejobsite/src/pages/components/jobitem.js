@@ -9,7 +9,7 @@ function JobItem(pageProps) {
 
   return (
     <>
-      <div className="w-full grid grid-cols-[2rem,1fr] h-20 rounded-xl gap-4  border-b-2 hover:border-cyan-600">
+      <div className="w-full h-24 grid grid-cols-[2rem,1fr] rounded-xl gap-4 border-b-2 flex-shrink-0 hover:border-cyan-600">
         <Image
           src="/next.svg"
           className="w-full h-full shrink-0 bg-cover bg-center rounded-xl"
