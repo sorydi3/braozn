@@ -1,41 +1,32 @@
+import { Flex, Box, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import NavBarItem from "./navbaritem";
+import Image from "next/image";
 
 function NavBar() {
   return (
-    <div className="flex justify-between">
-      <div className="flex m-auto p-3 rounded-full bg-cyan-700 text-white font-semibold">
-        <image
-          src="/next.svg"
-          className="w-full h-full shrink-0 bg-cover bg-center rounded-xl"
-          width={100}
-          height={100}
-        />
-      </div>
-      <div className="mr-auto left-16  top-3 md:fixed hidden md:flex space-x-5">
-        <Link href="\">
-          <NavBarItem name="Home" focused={true} />
+    <Flex
+      bg="gray.800"
+      p={4}
+      align="center"
+      shadow="lg"
+      className="shadow-lg fixed w-full z-10 top-0 left-0 right-0"
+    >
+      <Text fontWeight="bold" color="white">
+        My App
+      </Text>
+      <Box mr="auto" className=" space-x-2 ml-6 ">
+        <Link href="\" color="white" mr={6}>
+          Home
         </Link>
-
-        <Link href="contact">
-          <NavBarItem name="Contact" />
+        <Link href="\" color="white" mr={6}>
+          About
         </Link>
-
-        <Link href="about">
-          <NavBarItem name="About" />
+        <Link href="\" color="white">
+          Contact
         </Link>
-
-        <Link href="companies">
-          <NavBarItem name="Companies" />
-        </Link>
-
-        <Link href="jobs">
-          <NavBarItem name="Jobs" />
-        </Link>
-      </div>
-
-      <div className="md:hidden flex flex-col space-y-2"></div>
-    </div>
+      </Box>
+    </Flex>
   );
 }
 
