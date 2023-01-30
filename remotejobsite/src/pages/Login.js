@@ -2,7 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import { FaUserAlt, FaLock } from "react-icons/fa";
 import { useState } from "react";
-import {
+import { auth } from "@/config/firebase";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useEffect } from "react";
+import Router from "next/router";
+
+import {  
   Button,
   Flex,
   Heading,
@@ -15,6 +21,7 @@ import {
 } from "@chakra-ui/react";
 
 function Login(props) {
+  const [user, setUser] = useAuthState(auth);
   const { toggleColorMode } = useColorMode();
 
   const bg = useColorModeValue("gray.100", "gray.900");
@@ -22,6 +29,23 @@ function Login(props) {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleShowClick = () => setShowPassword(!showPassword);
+
+  const provider = new GoogleAuthProvider();
+  const signInWithGoogle = async () => {
+    const result = await signInWithPopup(auth, provider);
+  };
+
+  useEffect(() => {
+    if (user) {
+      console.log("user", user);
+    } else {
+      console.log("no user");
+    }
+  }, [user]);
+
+  if (user) {
+    Router.push("/");
+  }
 
   return (
     <Flex className="justify-center align-center w-screen h-screen ">
@@ -67,6 +91,8 @@ function Login(props) {
           Login
         </Button>
         <Button onClick={toggleColorMode}>Toggle Color Mode</Button>
+
+        <Button onClick={signInWithGoogle}>Sign in with Google</Button>
       </Flex>
     </Flex>
   );
