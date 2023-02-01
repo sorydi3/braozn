@@ -4,30 +4,52 @@ import { Box, Button, useColorMode } from "@chakra-ui/react";
 import Link from "next/link";
 import { HiOutlineLightBulb } from "react-icons/hi";
 import { FaLightbulb } from "react-icons/fa";
+import { auth } from "@/config/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 function Singnuploginbut(props) {
   const { toggleColorMode } = useColorMode();
+  const [user, setUser] = useAuthState(auth);
   return (
     <Box className="flex space-x-2 justify-end ml-auto">
       <Button onClick={toggleColorMode}>
         <HiOutlineLightBulb />
       </Button>
 
-      <Link href="/Login">
-        <Box
-          _hover={{ bg: "red.300" }}
-          as="button"
-          borderRadius="md"
-          bg="tomato"
-          color="white"
-          px={4}
-          h={8}
-          fontWeight={600}
+      {user ? (
+        <Button
+          onClick={() => {
+            auth.signOut();
+          }}
         >
-          Login
-        </Box>
-      </Link>
-      <Link href="/Signup">
+          Logout
+        </Button>
+      ) : (
+        <Link href="/Login">
+          <Box
+            _hover={{ bg: "red.300" }}
+            as="button"
+            borderRadius="md"
+            bg="tomato"
+            color="white"
+            px={4}
+            h={8}
+            fontWeight={600}
+          >
+            Login
+          </Box>
+        </Link>
+      )}
+    </Box>
+  );
+}
+
+Singnuploginbut.propTypes = {};
+
+export default Singnuploginbut;
+
+/*
+ <Link href="/Signup">
         <Box
           as="button"
           _hover={{ bg: "green.600" }}
@@ -41,10 +63,4 @@ function Singnuploginbut(props) {
           Signup
         </Box>
       </Link>
-    </Box>
-  );
-}
-
-Singnuploginbut.propTypes = {};
-
-export default Singnuploginbut;
+*/

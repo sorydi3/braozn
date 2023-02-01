@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { AiOutlineCloudUpload } from "react-icons/ai";
+import { motion } from "framer-motion";
 
 import {
   Popover,
@@ -42,9 +43,11 @@ const Apply = (props) => {
       closeOnBlur={false}
     >
       <PopoverTrigger>
-        <Button colorScheme="teal" mt="2.5" ml="10rem">
-          Apply Now
-        </Button>
+        <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+          <Button colorScheme="teal" mt="2.5" ml="10rem">
+            Apply Now
+          </Button>
+        </motion.button>
       </PopoverTrigger>
       <FocusLock disabled={!isOpen}>
         <PopoverContent>

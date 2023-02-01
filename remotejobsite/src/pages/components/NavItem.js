@@ -10,8 +10,8 @@ function NavItem(props) {
         <Box
           fontWeight="bold"
           as="button"
-          background="tomato"
-          _hover={{ background: "red" }}
+          colorscheme="gray.50"
+          _hover={{ background: "teal" }}
           rounded="lg"
           px={2}
           py={2}
@@ -23,8 +23,8 @@ function NavItem(props) {
         <Box
           fontWeight="bold"
           as="button"
-          background="tomato"
-          _hover={{ background: "red" }}
+          colorscheme="gray.900"
+          _hover={{ background: "teal" }}
           rounded="lg"
           px={2}
           py={2}
@@ -36,8 +36,8 @@ function NavItem(props) {
         <Box
           fontWeight="bold"
           as="button"
-          background="tomato"
-          _hover={{ background: "red" }}
+          colorscheme="gray.900"
+          _hover={{ background: "teal" }}
           rounded="lg"
           px={2}
           py={2}
