@@ -8,7 +8,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useEffect } from "react";
 import Router from "next/router";
 
-import {  
+import {
   Button,
   Flex,
   Heading,
@@ -90,9 +90,9 @@ function Login(props) {
         <Button colorScheme={"teal"} className="mb-6">
           Login
         </Button>
-        <Button onClick={toggleColorMode}>Toggle Color Mode</Button>
-
-        <Button onClick={signInWithGoogle}>Sign in with Google</Button>
+        <Button onClick={signInWithGoogle} mt="2.3rem">
+          Sign in with Google
+        </Button>
       </Flex>
     </Flex>
   );
