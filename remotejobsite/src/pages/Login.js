@@ -1,13 +1,16 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { FaUserAlt, FaLock } from "react-icons/fa";
-import { useState } from "react";
+
+import { FaUserAlt, FaLock, FaFacebook, FaGoogle } from "react-icons/fa";
 import { auth } from "@/config/firebase";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import {
+  signInWithPopup,
+  GoogleAuthProvider,
+  FacebookAuthProvider,
+} from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Router from "next/router";
-import { FaGoogle } from "react-icons/fa";
+
 import {
   Button,
   Flex,
@@ -33,7 +36,12 @@ function Login(props) {
 
   const provider = new GoogleAuthProvider();
   const signInWithGoogle = async () => {
-    const result = await signInWithPopup(auth, provider);
+    await signInWithPopup(auth, provider);
+  };
+
+  const provider2 = new FacebookAuthProvider();
+  const signInWithFacebook = async () => {
+    await signInWithPopup(auth, provider2);
   };
 
   useEffect(() => {
@@ -56,7 +64,6 @@ function Login(props) {
         className="rounded-lg shadow-lg p-10 m-auto"
       >
         <Heading className="mb-3 mx-auto">Login</Heading>
-
         <InputGroup>
           <InputLeftElement pointerEvents="none" children={<FaUserAlt />} />
           <Input
@@ -68,7 +75,6 @@ function Login(props) {
             borderColor="gray.300"
           ></Input>
         </InputGroup>
-
         <InputGroup>
           <InputLeftElement pointerEvents="none" children={<FaLock />} />
           <Input
@@ -87,13 +93,17 @@ function Login(props) {
             </Button>
           </InputRightElement>
         </InputGroup>
-
         <Button colorScheme={"teal"} className="mb-6">
           Login
         </Button>
         <Button onClick={signInWithGoogle} mt="2.3rem">
           <TagLeftIcon as={FaGoogle} />
           Sign in with Google
+        </Button>
+
+        <Button onClick={signInWithFacebook} mt="2.1rem">
+          <TagLeftIcon as={FaFacebook} />
+          Sign in with facebook
         </Button>
       </Flex>
     </Flex>
