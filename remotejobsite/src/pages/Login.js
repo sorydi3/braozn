@@ -7,7 +7,7 @@ import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useEffect } from "react";
 import Router from "next/router";
-
+import { FaGoogle } from "react-icons/fa";
 import {
   Button,
   Flex,
@@ -16,6 +16,7 @@ import {
   InputGroup,
   InputLeftElement,
   InputRightElement,
+  TagLeftIcon,
   useColorMode,
   useColorModeValue,
 } from "@chakra-ui/react";
@@ -91,6 +92,7 @@ function Login(props) {
           Login
         </Button>
         <Button onClick={signInWithGoogle} mt="2.3rem">
+          <TagLeftIcon as={FaGoogle} />
           Sign in with Google
         </Button>
       </Flex>
