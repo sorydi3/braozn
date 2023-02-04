@@ -1,51 +1,39 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { Flex, Box, Text, useColorMode, Button } from "@chakra-ui/react";
+import { Button, HStack } from "@chakra-ui/react";
 import Link from "next/link";
+import { useColorModeValue } from "@chakra-ui/color-mode";
+import { motion } from "framer-motion";
+
+function Item({ href, children }) {
+  return (
+    <Link
+      href={href}
+      _focus={{ boxShadow: "none" }}
+      _active={{ boxShadow: "none" }}
+      _hover={{
+        textDecoration: "none",
+        bg: "gray.100",
+        color: useColorModeValue("gray.700", "gray.100"),
+        borderRadius: "md",
+      }}
+    >
+      <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+        <Button variant="ghost" _focus={{ boxShadow: "none" }}>
+          {children}
+        </Button>
+      </motion.button>
+    </Link>
+  );
+}
 
 function NavItem(props) {
   return (
-    <Box mr="auto" className=" space-x-5 ml-6 hidden md:flex ">
-      <Link href="" color="white" mr={6}>
-        <Box
-          fontWeight="bold"
-          as="button"
-          colorscheme="gray.50"
-          _hover={{ background: "teal" }}
-          rounded="lg"
-          px={2}
-          py={2}
-        >
-          <Text>Home</Text>
-        </Box>
-      </Link>
-      <Link href="/" color="white" mr={6}>
-        <Box
-          fontWeight="bold"
-          as="button"
-          colorscheme="gray.900"
-          _hover={{ background: "teal" }}
-          rounded="lg"
-          px={2}
-          py={2}
-        >
-          <Text>About</Text>
-        </Box>
-      </Link>
-      <Link href="/" color="white">
-        <Box
-          fontWeight="bold"
-          as="button"
-          colorscheme="gray.900"
-          _hover={{ background: "teal" }}
-          rounded="lg"
-          px={2}
-          py={2}
-        >
-          <Text>Contact</Text>
-        </Box>
-      </Link>
-    </Box>
+    <HStack mr="auto" as={"nav"} className=" space-x-5 ml-6 hidden md:flex ">
+      <Item href="/">Home</Item>
+      <Item href="/">About</Item>
+      <Item href="/">Contact</Item>
+      <Item href="/">Blog</Item>
+    </HStack>
   );
 }
 

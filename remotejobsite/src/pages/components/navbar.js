@@ -10,7 +10,7 @@ function NavBar() {
       p={4}
       align="center"
       shadow="lg"
-      className="shadow-lg fixed w-full z-10 top-0 left-0 right-0"
+      className="shadow-lg fixed w-full z-10 top-0 left-0 right-0 backdrop-filter backdrop-blur-sm"
     >
       <Image src="/netflix-logo.png" width={50} height={50} />
 

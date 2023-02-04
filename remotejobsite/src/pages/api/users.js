@@ -12,9 +12,10 @@ export default async function handler(req, res) {
       },
     });
     res.status(200).json(user);
+  } else {
+    const users = await prisma.usertest.findMany();
+    res.status(200).json(users);
   }
-  const users = await prisma.usertest.findMany();
-  res.status(200).json(users);
 }
 
 // Path: src\db\db.js

@@ -10,6 +10,7 @@ import {
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useEffect, useState } from "react";
 import Router from "next/router";
+import { motion } from "framer-motion";
 
 import {
   Button,
@@ -22,17 +23,44 @@ import {
   TagLeftIcon,
   useColorMode,
   useColorModeValue,
+  Text,
 } from "@chakra-ui/react";
+import Link from "next/link";
+import { async } from "@firebase/util";
+
+function InputField({ type, placeholder, icon }) {
+  const [showPassword, setShowPassword] = useState(true);
+  const handleShowClick = () => setShowPassword(!showPassword);
+  return (
+    <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 1 }}>
+      <InputGroup>
+        <InputLeftElement pointerEvents="none" children={icon} />
+
+        <Input
+          placeholder={placeholder}
+          type={type}
+          rounded={5}
+          variant="filled"
+          className="mb-4"
+          border={1}
+          borderColor="gray.300"
+        ></Input>
+        {type === "password" && (
+          <InputRightElement width="4.5rem">
+            <Button h="1.75rem" size="sm" onClick={handleShowClick}>
+              {showPassword ? "Hide" : "Show"}
+            </Button>
+          </InputRightElement>
+        )}
+      </InputGroup>
+    </motion.div>
+  );
+}
 
 function Login(props) {
   const [user, setUser] = useAuthState(auth);
-  const { toggleColorMode } = useColorMode();
 
   const bg = useColorModeValue("gray.100", "gray.900");
-
-  const [showPassword, setShowPassword] = useState(false);
-
-  const handleShowClick = () => setShowPassword(!showPassword);
 
   const provider = new GoogleAuthProvider();
   const signInWithGoogle = async () => {
@@ -64,35 +92,8 @@ function Login(props) {
         className="rounded-lg shadow-lg p-10 m-auto"
       >
         <Heading className="mb-3 mx-auto">Login</Heading>
-        <InputGroup>
-          <InputLeftElement pointerEvents="none" children={<FaUserAlt />} />
-          <Input
-            placeholder="Username"
-            rounded={5}
-            variant="filled"
-            className="mb-4"
-            border={1}
-            borderColor="gray.300"
-          ></Input>
-        </InputGroup>
-        <InputGroup>
-          <InputLeftElement pointerEvents="none" children={<FaLock />} />
-          <Input
-            placeholder="Password"
-            type={showPassword ? "text" : "password"}
-            rounded={5}
-            variant="filled"
-            className="mb-4 "
-            border={1}
-            borderColor="gray.300"
-          />
-
-          <InputRightElement width="4.5rem">
-            <Button h="1.75rem" size="sm" onClick={handleShowClick}>
-              {showPassword ? "Hide" : "Show"}
-            </Button>
-          </InputRightElement>
-        </InputGroup>
+        <InputField type="text" placeholder="Email" icon={<FaUserAlt />} />
+        <InputField type="password" placeholder="Password" icon={<FaLock />} />
         <Button colorScheme={"teal"} className="mb-6">
           Login
         </Button>
@@ -101,10 +102,14 @@ function Login(props) {
           Sign in with Google
         </Button>
 
-        <Button onClick={signInWithFacebook} mt="2.1rem">
+        <Button onClick={signInWithFacebook} mt="0.5rem">
           <TagLeftIcon as={FaFacebook} />
           Sign in with facebook
         </Button>
+
+        <Link href="/Signup" className="mt-3 self-center">
+          <Text className="text-sky-600">Don't have an account? Sign up</Text>
+        </Link>
       </Flex>
     </Flex>
   );
