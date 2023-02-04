@@ -1,8 +1,10 @@
 import React from "react";
-import { Button, HStack } from "@chakra-ui/react";
+import { Button, HStack, Toast } from "@chakra-ui/react";
 import Link from "next/link";
 import { useColorModeValue } from "@chakra-ui/color-mode";
 import { motion } from "framer-motion";
+import toaster, { Toaster } from "react-hot-toast";
+import { auth } from "@/config/firebase";
 
 function Item({ href, children }) {
   return (
@@ -17,11 +19,11 @@ function Item({ href, children }) {
         borderRadius: "md",
       }}
     >
-      <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+      <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
         <Button variant="ghost" _focus={{ boxShadow: "none" }}>
           {children}
         </Button>
-      </motion.button>
+      </motion.div>
     </Link>
   );
 }

@@ -43,13 +43,22 @@ const Apply = (props) => {
       closeOnBlur={false}
     >
       <PopoverTrigger>
-        <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
           <Button colorScheme="teal" mt="2.5" ml="10rem">
             Apply Now
           </Button>
-        </motion.button>
+        </motion.div>
       </PopoverTrigger>
-      <FocusLock disabled={!isOpen}>
+    </Popover>
+  );
+};
+
+Apply.propTypes = {};
+
+export default Apply;
+
+/*
+<FocusLock disabled={!isOpen}>
         <PopoverContent>
           <PopoverCloseButton />
           <PopoverBody>
@@ -71,7 +80,7 @@ const Apply = (props) => {
             </InputGroup>
 
             <Box mt="2rem">
-              <Button colorScheme="teal" mr="1rem">
+              <Button colorScheme="teal" mr="1rem" whileHover={{}}>
                 Submit
               </Button>
               <Button colorScheme="red" onClick={onClose}>
@@ -81,10 +90,4 @@ const Apply = (props) => {
           </PopoverBody>
         </PopoverContent>
       </FocusLock>
-    </Popover>
-  );
-};
-
-Apply.propTypes = {};
-
-export default Apply;
+      */
