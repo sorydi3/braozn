@@ -42,6 +42,14 @@ import {
   ModalBody,
   ModalCloseButton,
   Tooltip,
+  Card,
+  CardBody,
+  CardHeader,
+  CardFooter,
+  CardTitle,
+  CardSubtitle,
+  CardText,
+  Divider,
 } from "@chakra-ui/react";
 
 const benefits = [
@@ -276,22 +284,19 @@ function JobExperience() {
 
 function WraperJobDetails({ children, headinTiltle }) {
   return (
-    <Box
-      display={"flex"}
-      flexWrap="wrap"
-      flexDir={"column"}
-      gap={2}
-      width="inherit"
-      shadow={"md"}
-      mt={4}
+    <Card
       p={4}
-      rounded={"md"}
+      shadow={"md"}
+      borderWidth="1px"
+      borderRadius={"lg"}
+      className="w-full"
     >
-      <Heading fontSize={"xl"} fontWeight={"bold"} textAlign={"center"}>
+      <CardHeader fontSize={"xl"} fontWeight={"bold"} mb={4}>
         {headinTiltle}
-      </Heading>
-      {children}
-    </Box>
+      </CardHeader>
+      <Divider></Divider>
+      <CardBody>{children}</CardBody>
+    </Card>
   );
 }
 
@@ -476,16 +481,9 @@ function JobInputItem({
 }
 
 function JobBost(props) {
-  const { colorMode, toggleColorMode } = useColorMode();
-  const formBackground = useColorModeValue("gray.100", "gray.700");
   const formBorder = useColorModeValue("gray.300", "gray.600");
   const formColor = useColorModeValue("gray.700", "gray.200");
-  const formPlaceholder = useColorModeValue("gray.400", "gray.500");
   const formShadow = useColorModeValue("md", "dark-lg");
-  const formFocusBorder = useColorModeValue("blue.500", "blue.300");
-  const formFocusShadow = useColorModeValue("outline", "dark-outline");
-  const formErrorBorder = useColorModeValue("red.300", "red.500");
-  const formErrorShadow = useColorModeValue("outline", "dark-outline");
   return (
     <Box
       display={"flex"}
