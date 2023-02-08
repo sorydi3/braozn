@@ -32,6 +32,8 @@ import {
   CardHeader,
   CardBody,
   CardFooter,
+  HStack,
+
 } from "@chakra-ui/react";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -145,16 +147,76 @@ const ContactForm = () => {
           </FormControl>
         </Box>
 
+        <Button
+          mt={10}
+          w={'full'}
+          bg={'green.400'}
+          color={'white'}
+          rounded={'xl'}
+          boxShadow={'0 5px 20px 0px rgb(72 187 120 / 43%)'}
+          _hover={{
+            bg: 'green.500',
+          }}
+          _focus={{
+            bg: 'green.500',
+          }}>
+          call us!!
+        </Button>
       </CardBody>
     </Card>
   );
 };
 
+const Service = () => {
+
+  return (
+    <Card
+      bg={useColorModeValue("white", "gray.800")}
+      classname="bg-red-200 h-32"
+
+
+    >
+      <CardHeader>
+        <Heading>Service</Heading>
+      </CardHeader>
+
+      <CardBody>
+        <Text>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </Text>
+      </CardBody>
+
+      <CardFooter>
+      </CardFooter>
+
+    </Card>
+  );
+}
+
+const Services = () => {
+
+  return (
+    <>
+      <Heading>
+        Our Services
+      </Heading>
+      <HStack>
+        <Service />
+        <Service />
+      </HStack>
+    </>
+  );
+}
+
 export default function Home() {
   return (
-    <Flex justifyContent={"center"} clasname>
-      <LeftHero></LeftHero>
-      <ContactForm />
+    <Flex direction="column" align="center" justify="center">
+      <Flex justifyContent={"center"} h="screen">
+        <LeftHero></LeftHero>
+      </Flex>
+
+      <Services />
+
     </Flex>
   );
 }
