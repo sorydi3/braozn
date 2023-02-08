@@ -1,5 +1,8 @@
-import './globals.css'
-import Navbar from './navbar'
+'use client';
+import React from 'react'
+
+import { ChakraProvider } from '@chakra-ui/react'
+import Navbar from './navbar';
 
 export default function RootLayout({
   children,
@@ -13,8 +16,13 @@ export default function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <Navbar></Navbar>
-      <body>{children}</body>
+      <body>
+        <ChakraProvider>
+          <Navbar></Navbar>
+          <div>{children}</div>
+         </ChakraProvider>
+      </body>
+     
     </html>
   )
 }
