@@ -172,23 +172,42 @@ const Service = () => {
   return (
     <Card
       bg={useColorModeValue("white", "gray.800")}
-      classname="bg-red-200 h-32"
-
-
+      rounded={{ sm: "lg" }}
+      overflow="hidden"
+      w={{ base: "full", md: 11 / 12, xl: 8 / 12 }}
     >
-      <CardHeader>
-        <Heading>Service</Heading>
+      <CardHeader
+        bg={useColorModeValue("white", "gray.800")}
+        p={32}
+      >
+        <Heading
+          bg={useColorModeValue("white", "gray.800")}
+          fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
+          fontWeight="extrabold"
+          letterSpacing="tight"
+          lineHeight="shorter"
+        >Service</Heading>
       </CardHeader>
 
-      <CardBody>
-        <Text>
+      <CardBody
+        bg={useColorModeValue("white", "gray.800")}
+        p={32}
+
+      >
+        <Text
+          bg={useColorModeValue("white", "gray.800")}
+          fontSize={{ base: "md", lg: "lg" }}
+          color={useColorModeValue("gray.500", "gray.400")}
+        >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </Text>
       </CardBody>
 
-      <CardFooter>
+      <CardFooter
+        bg={useColorModeValue("white", "gray.800")}
+        p={32}
+      >
       </CardFooter>
-
     </Card>
   );
 }
@@ -197,10 +216,20 @@ const Services = () => {
 
   return (
     <>
-      <Heading>
+      <Heading
+        bg={useColorModeValue("white", "gray.800")}
+        fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
+        fontWeight="extrabold"
+        letterSpacing="tight"
+        lineHeight="shorter"
+      >
         Our Services
       </Heading>
-      <HStack>
+      <HStack
+        spacing={4}
+        align="center"
+
+      >
         <Service />
         <Service />
       </HStack>
@@ -211,12 +240,16 @@ const Services = () => {
 export default function Home() {
   return (
     <Flex direction="column" align="center" justify="center">
-      <Flex justifyContent={"center"} h="screen">
+      <Flex justifyContent={"center"}
+        w={{ base: "full", md: 11 / 12, xl: 8 / 12 }}
+        h={{ base: "full", md: 11 / 12, xl: 8 / 12 }}
+        bg={useColorModeValue("white", "gray.800")}
+        rounded={{ sm: "lg" }}
+        overflow="hidden"
+      >
         <LeftHero></LeftHero>
       </Flex>
-
       <Services />
-
     </Flex>
   );
 }
