@@ -33,8 +33,14 @@ import {
   CardBody,
   CardFooter,
   HStack,
+  List,
+  ListItem,
+  TagLeftIcon,
+  ListIcon
 
 } from "@chakra-ui/react";
+
+import { CheckCircleIcon } from '@chakra-ui/icons';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -103,22 +109,19 @@ const LeftHero = () => {
 const ContactForm = () => {
   return (
     <Card
-      bg={useColorModeValue("white", "gray.800")}
-      w={{ base: "full", md: 11 / 12, xl: 8 / 12 }}
+      bg={useColorModeValue("gray.100", "gray.800")}
       rounded={{ sm: "lg" }}
       overflow="hidden"
     >
-      <CardBody p={32}
+      <CardBody
 
-        bg={useColorModeValue("white", "gray.800")}
-
+        bg={useColorModeValue("gray.100", "gray.800")}
 
       >
         <Box
 
           bg={useColorModeValue("gray.100", "gray.900")}
-          p={8}
-          shadow="base"
+
           rounded={3}
         >
 
@@ -173,25 +176,27 @@ const Service = () => {
     <Card
       bg={useColorModeValue("white", "gray.800")}
       rounded={{ sm: "lg" }}
+      justifyContent="center"
       overflow="hidden"
-      w={{ base: "full", md: 11 / 12, xl: 8 / 12 }}
     >
       <CardHeader
         bg={useColorModeValue("white", "gray.800")}
-        p={32}
+        justifyContent="center"
+        w="full"
+        m="auto"
       >
-        <Heading
-          bg={useColorModeValue("white", "gray.800")}
-          fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
-          fontWeight="extrabold"
-          letterSpacing="tight"
-          lineHeight="shorter"
-        >Service</Heading>
+        <Image
+          src="thirteen.svg"
+          alt="Picture of the author"
+          width={50}
+          height={50}
+        >
+        </Image>
       </CardHeader>
 
       <CardBody
         bg={useColorModeValue("white", "gray.800")}
-        p={32}
+        p={6}
 
       >
         <Text
@@ -202,13 +207,7 @@ const Service = () => {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </Text>
       </CardBody>
-
-      <CardFooter
-        bg={useColorModeValue("white", "gray.800")}
-        p={32}
-      >
-      </CardFooter>
-    </Card>
+    </Card >
   );
 }
 
@@ -216,20 +215,15 @@ const Services = () => {
 
   return (
     <>
-      <Heading
-        bg={useColorModeValue("white", "gray.800")}
-        fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
-        fontWeight="extrabold"
-        letterSpacing="tight"
-        lineHeight="shorter"
-      >
-        Our Services
-      </Heading>
       <HStack
-        spacing={4}
+        spacing={3}
         align="center"
-
+        mx="1rem"
+        m={10}
+        mr="20rem"
+        justifyContent="center"
       >
+        <Service />
         <Service />
         <Service />
       </HStack>
@@ -242,7 +236,6 @@ export default function Home() {
     <Flex direction="column" align="center" justify="center">
       <Flex justifyContent={"center"}
         w={{ base: "full", md: 11 / 12, xl: 8 / 12 }}
-        h={{ base: "full", md: 11 / 12, xl: 8 / 12 }}
         bg={useColorModeValue("white", "gray.800")}
         rounded={{ sm: "lg" }}
         overflow="hidden"
@@ -250,6 +243,56 @@ export default function Home() {
         <LeftHero></LeftHero>
       </Flex>
       <Services />
+      <List_Items />
     </Flex>
   );
+}
+
+
+const List_Items = () => {
+  return (
+    <Flex
+      width="full"
+      bg={useColorModeValue("gray.100", "gray.700")}
+      justifyContent="center"
+      alignItems="center"
+      
+    >
+      <List justifyContent="center" shadow="lg"
+      >
+
+        <List_Item title="24/7 Online Support" />
+
+        <List_Item title="Expert Team" />
+
+        <List_Item title="Pure Equipment" />
+
+        <List_Item title="Unlimited Product" />
+      </List>
+
+
+      <ContactForm />
+
+
+    </Flex>
+  );
+}
+
+const List_Item = ({ title }) => {
+
+  return (
+    <ListItem
+      bg={useColorModeValue("gray.100", "gray.700")}
+      p={3}
+    >
+      <Flex
+        bg={useColorModeValue("gray.100", "gray.700")}
+        align="center"
+      >
+        <ListIcon as={CheckCircleIcon} color="green.500" />
+        <Text fontSize="sm" fontWeight="bold">{title}</Text>
+      </Flex>
+    </ListItem>
+  );
+
 }
