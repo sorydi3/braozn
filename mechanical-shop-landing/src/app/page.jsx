@@ -3,26 +3,17 @@ import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "./page.module.css";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+import Rellax from "rellax";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from 'react-intersection-observer';
+import { useEffect } from "react";
 import {
-  Link,
   Box,
   Text,
   Stack,
   Button,
   Heading,
-  Icon,
   useColorModeValue,
-  chakra,
-  VisuallyHidden,
-  Menu,
-  MenuButton,
-  Avatar,
-  MenuList,
-  MenuItem,
-  MenuDivider,
-  Center,
-  useDisclosure,
-  useColorMode,
   Flex,
   FormControl,
   FormLabel,
@@ -31,20 +22,99 @@ import {
   Card,
   CardHeader,
   CardBody,
-  CardFooter,
   HStack,
   List,
   ListItem,
   TagLeftIcon,
   ListIcon
-
 } from "@chakra-ui/react";
 
 import { CheckCircleIcon } from '@chakra-ui/icons';
 
 const inter = Inter({ subsets: ["latin"] });
 
+
+const initAnimat = ({inView,animationText1,animationText2}) => {
+
+  if(inView){
+    animationText1.start({
+    x : 1,
+    transition : {
+      duration : 1,
+      delay : 0.2,
+      type:"tween"  
+    }
+   });
+
+   /*
+   animationText2.start({
+    x : 1,
+    transition : {
+      duration : 1,
+      delay : 0.2,
+      type:"tween"
+    }
+   });
+   */
+  }else{
+    
+    console.log("not in view!!" + animationText1);
+    
+   
+    
+    animationText1.start({
+      x:"100vw"
+    });
+    
+
+  }
+
+}
+
 const LeftHero = () => {
+
+  const { ref, inView, entry } = useInView({
+    /* Optional options */
+    threshold: 0.2,
+  });
+
+  const animationText1 = useAnimation();
+  const animationText2 = useAnimation();
+
+  useEffect(()=>{
+    if(inView){
+      animationText1.start({
+      x : 1,
+      transition : {
+        duration : 1,
+        delay : 0.2,
+        type:"tween"  
+      }
+     });
+
+     animationText2.start({
+      x : 1,
+      transition : {
+        duration : 1,
+        delay : 0.2,
+        type:"tween"
+      }
+     });
+
+    }else{
+      animationText1.start({
+        x:1000
+      });
+
+      animationText2.start({
+        x:-1000
+      });
+    }
+    //animationText1!=="undefined" && animationText2!=="undefined" ? initAnimat(inView,animationText1,animationText2) : null;
+  },[inView]);
+
+ 
+
   return (
     <Box
       bg={useColorModeValue("white", "gray.800")}
@@ -52,21 +122,32 @@ const LeftHero = () => {
       mx="auto"
       overflow="hidden"
     >
-      <Stack direction={{ base: "column", md: "row" }}>
+      <Stack direction={{ base: "column", md: "row" }}
+       ref ={ref}
+      >
         <Stack flex={1} p={10} spacing={6}>
           <Heading
             fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
             fontWeight="extrabold"
             letterSpacing="tight"
             lineHeight="shorter"
-          >
-            <Text
-              as="span"
-              display="block"
-              color={useColorModeValue("gray.600", "gray.400")}
+          > 
+            <motion.div
+               animate={animationText1}
             >
-              Get Your Vehicle Running Like New
-            </Text>
+              <Text
+                as="span"
+                display="block"
+                color={useColorModeValue("gray.600", "gray.400")}
+              >
+                Get Your Vehicle Running Like New
+              </Text>
+            </motion.div>
+
+            <motion.div
+              animate={animationText2}
+            >
+
             <Text
               as="span"
               display="block"
@@ -74,6 +155,7 @@ const LeftHero = () => {
             >
               Chakra UI
             </Text>
+              </motion.div>
           </Heading>
           <Text
             fontSize={{ base: "md", lg: "lg" }}
@@ -222,6 +304,7 @@ const Services = () => {
         m={10}
         mr="20rem"
         justifyContent="center"
+        className=".rellax1"
       >
         <Service />
         <Service />
@@ -232,8 +315,50 @@ const Services = () => {
 }
 
 export default function Home() {
+
+  const rellax = new Rellax(".rellax", {
+    speed: -2,
+    round: true,
+    vertical: true,
+    horizontal: false
+  });
+
+  const { ref, inView, entry } = useInView({
+    /* Optional options */
+    threshold: 0.2,
+  });
+
+  const animation = useAnimation();
+
+
+  useEffect(() => {
+    if (inView) {
+      animation.start({
+        x: 0,
+        transition: {
+          duration: 1,
+          type:"tween"
+
+        }
+      });
+    } else {
+      console.log("not in vew!!!")
+      animation.start({
+        x: 1000
+      })
+    }
+  }
+    , [inView]);
+
+
+
+
+
+
+
   return (
-    <Flex direction="column" align="center" justify="center">
+    <Flex direction="column" align="center" justify="center"
+    >
       <Flex justifyContent={"center"}
         w={{ base: "full", md: 11 / 12, xl: 8 / 12 }}
         bg={useColorModeValue("white", "gray.800")}
@@ -243,37 +368,45 @@ export default function Home() {
         <LeftHero></LeftHero>
       </Flex>
       <Services />
-      <List_Items />
+      <List_Items reff={ref} animation={animation} />
     </Flex>
   );
 }
 
 
-const List_Items = () => {
+const List_Items = ({ reff, animation }) => {
   return (
     <Flex
       width="full"
       bg={useColorModeValue("gray.100", "gray.700")}
       justifyContent="center"
       alignItems="center"
-      
+      gap={3}
+      p={10}
+      ref={reff}
     >
-      <List justifyContent="center" shadow="lg"
+      <motion.div
+        animate={animation}
       >
+        <List justifyContent="center" shadow="lg">
 
-        <List_Item title="24/7 Online Support" />
+          <List_Item title="24/7 Online Support" />
 
-        <List_Item title="Expert Team" />
+          <List_Item title="Expert Team" />
 
-        <List_Item title="Pure Equipment" />
+          <List_Item title="Pure Equipment" />
 
-        <List_Item title="Unlimited Product" />
-      </List>
+          <List_Item title="Unlimited Product" />
+        </List>
+      </motion.div>
 
+      <motion.div
+        animate={animation}
+      >
+        <ContactForm
 
-      <ContactForm />
-
-
+        />
+      </motion.div>
     </Flex>
   );
 }
