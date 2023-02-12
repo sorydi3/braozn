@@ -33,87 +33,27 @@ import { CheckCircleIcon } from '@chakra-ui/icons';
 
 const inter = Inter({ subsets: ["latin"] });
 
-
-const initAnimat = ({inView,animationText1,animationText2}) => {
-
-  if(inView){
-    animationText1.start({
-    x : 1,
-    transition : {
-      duration : 1,
-      delay : 0.2,
-      type:"tween"  
-    }
-   });
-
-   /*
-   animationText2.start({
-    x : 1,
-    transition : {
-      duration : 1,
-      delay : 0.2,
-      type:"tween"
-    }
-   });
-   */
-  }else{
-    
-    console.log("not in view!!" + animationText1);
-    
-   
-    
-    animationText1.start({
-      x:"100vw"
-    });
-    
-
-  }
-
-}
-
 const LeftHero = () => {
 
-  const { ref, inView, entry } = useInView({
+  const { ref, inView, entry} = useInView({
     /* Optional options */
     threshold: 0.2,
   });
 
-  const animationText1 = useAnimation();
-  const animationText2 = useAnimation();
-
-  useEffect(()=>{
-    if(inView){
-      animationText1.start({
-      x : 1,
-      transition : {
-        duration : 1,
-        delay : 0.2,
-        type:"tween"  
+  const variant = {
+    hidden: (i) => ({
+      x:i 
+    }),
+    visible:(i) =>({
+      x: 0,
+      transition: {
+        duration: 1,
+        delay: 0.2,
+        type: "tween",
+        ease: "easeInOut"
       }
-     });
-
-     animationText2.start({
-      x : 1,
-      transition : {
-        duration : 1,
-        delay : 0.2,
-        type:"tween"
-      }
-     });
-
-    }else{
-      animationText1.start({
-        x:1000
-      });
-
-      animationText2.start({
-        x:-1000
-      });
-    }
-    //animationText1!=="undefined" && animationText2!=="undefined" ? initAnimat(inView,animationText1,animationText2) : null;
-  },[inView]);
-
- 
+    })
+  }
 
   return (
     <Box
@@ -123,7 +63,7 @@ const LeftHero = () => {
       overflow="hidden"
     >
       <Stack direction={{ base: "column", md: "row" }}
-       ref ={ref}
+        ref={ref}
       >
         <Stack flex={1} p={10} spacing={6}>
           <Heading
@@ -131,9 +71,11 @@ const LeftHero = () => {
             fontWeight="extrabold"
             letterSpacing="tight"
             lineHeight="shorter"
-          > 
+          >
             <motion.div
-               animate={animationText1}
+              variants={variant}
+              custom ={-1000}
+              animate={inView ? "visible" : "hidden"}
             >
               <Text
                 as="span"
@@ -145,17 +87,19 @@ const LeftHero = () => {
             </motion.div>
 
             <motion.div
-              animate={animationText2}
+              variants={variant}
+              custom ={1000}
+              animate={inView ? "visible" : "hidden"}
             >
 
-            <Text
-              as="span"
-              display="block"
-              color={useColorModeValue("green.300", "white")}
-            >
-              Chakra UI
-            </Text>
-              </motion.div>
+              <Text
+                as="span"
+                display="block"
+                color={useColorModeValue("green.300", "white")}
+              >
+                Chakra UI
+              </Text>
+            </motion.div>
           </Heading>
           <Text
             fontSize={{ base: "md", lg: "lg" }}
@@ -260,6 +204,9 @@ const Service = () => {
       rounded={{ sm: "lg" }}
       justifyContent="center"
       overflow="hidden"
+      height={{base:60,md:250}}
+      width={{base:"full",md:250}}
+
     >
       <CardHeader
         bg={useColorModeValue("white", "gray.800")}
@@ -272,6 +219,7 @@ const Service = () => {
           alt="Picture of the author"
           width={50}
           height={50}
+
         >
         </Image>
       </CardHeader>
@@ -297,19 +245,18 @@ const Services = () => {
 
   return (
     <>
-      <HStack
+      < Flex
         spacing={3}
         align="center"
-        mx="1rem"
-        m={10}
-        mr="20rem"
-        justifyContent="center"
+        my="100"
+        mx="auto"
+        justifyContent="between"
         className=".rellax1"
       >
         <Service />
         <Service />
         <Service />
-      </HStack>
+      </Flex>
     </>
   );
 }
@@ -337,7 +284,7 @@ export default function Home() {
         x: 0,
         transition: {
           duration: 1,
-          type:"tween"
+          type: "tween"
 
         }
       });
