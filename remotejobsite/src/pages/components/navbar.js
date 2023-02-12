@@ -1,41 +1,24 @@
-import Link from "next/link";
-import NavBarItem from "./navbaritem";
+import { Flex, Box, Text, useColorMode, Button } from "@chakra-ui/react";
+import { MotionConfig } from "framer-motion";
+import Image from "next/image";
+import { HiOutlineLightBulb } from "react-icons/hi";
+import NavItem from "./NavItem";
+import Singnuploginbut from "./Singnuploginbut";
 
 function NavBar() {
   return (
-    <div className="flex justify-between">
-      <div className="flex m-auto p-3 rounded-full bg-cyan-700 text-white font-semibold">
-        <image
-          src="/next.svg"
-          className="w-full h-full shrink-0 bg-cover bg-center rounded-xl"
-          width={100}
-          height={100}
-        />
-      </div>
-      <div className="mr-auto left-16  top-3 md:fixed hidden md:flex space-x-5">
-        <Link href="\">
-          <NavBarItem name="Home" focused={true} />
-        </Link>
+    <Flex
+      p={4}
+      align="center"
+      shadow="lg"
+      className="shadow-lg fixed w-full z-10 top-0 left-0 right-0 backdrop-filter backdrop-blur-sm"
+    >
+      <Image src="/netflix-logo.png" width={50} height={50} alt="" />
 
-        <Link href="contact">
-          <NavBarItem name="Contact" />
-        </Link>
+      <NavItem />
 
-        <Link href="about">
-          <NavBarItem name="About" />
-        </Link>
-
-        <Link href="companies">
-          <NavBarItem name="Companies" />
-        </Link>
-
-        <Link href="jobs">
-          <NavBarItem name="Jobs" />
-        </Link>
-      </div>
-
-      <div className="md:hidden flex flex-col space-y-2"></div>
-    </div>
+      <Singnuploginbut />
+    </Flex>
   );
 }
 
