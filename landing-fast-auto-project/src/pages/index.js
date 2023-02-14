@@ -22,7 +22,8 @@ import {
   CardFooter, 
   List,
   ListItem,
-  ListIcon
+  ListIcon,
+  VStack
 } from "@chakra-ui/react";
 
 import { CheckCircleIcon } from '@chakra-ui/icons';
@@ -303,6 +304,7 @@ export default function Home() {
       </Flex>
       <Services />
       <List_Items reff={ref} animation={animation} />
+      <WhatWeDo />
     </Flex>
   );
 }
@@ -342,6 +344,61 @@ const List_Items = ({ reff, animation }) => {
         />
       </motion.div>
     </Flex>
+  );
+}
+
+
+function WhatWeDo(){
+  return (
+    <VStack
+      justify={"center"}
+      w={{ base: "full", md: 11 / 12, xl: 8 / 12 }}
+      py={40}
+    >
+      <Heading
+
+      >
+        What We Do
+      </Heading>
+      <Flex
+        justify="center"
+        className="bg-red-300"
+        gap={3}
+        direction={{ base: "column", md: "row" }}
+        mt={100}
+      >
+
+      <WhatWeDoItem/>
+
+      <WhatWeDoItem/>
+
+      <WhatWeDoItem/>
+
+      <WhatWeDoItem/>
+        
+      </Flex>
+    </VStack>
+  );
+}
+
+function WhatWeDoItem(){
+  return (
+
+    <Card>
+          <CardBody>
+            <Image 
+              src="thirteen.svg"
+              alt="Picture of the author"
+              width={50}
+              height={50}
+            >
+            </Image>
+            <Text>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </Text>
+          </CardBody>
+        </Card>
+
   );
 }
 
