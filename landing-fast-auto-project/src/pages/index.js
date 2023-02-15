@@ -305,6 +305,7 @@ export default function Home() {
       <Services />
       <List_Items reff={ref} animation={animation} />
       <WhatWeDo />
+      <OurMecanics/>
     </Flex>
   );
 }
@@ -344,6 +345,53 @@ const List_Items = ({ reff, animation }) => {
         />
       </motion.div>
     </Flex>
+  );
+}
+
+
+function OurMecanics(){
+  return (
+    <VStack
+      justify={"center"}
+      w={{ base: "full", md: 11 / 12, xl: 8 / 12 }}
+      py={40}
+    >
+      <Heading
+
+      >
+        Our Mechanics
+
+      </Heading>
+      <Flex
+        justify="center"
+        className="bg-red-300"
+        gap={3}
+        direction={{ base: "column", md: "row" }}
+        mt={100}
+      >
+
+      <OurMechanicItem/>
+
+      <OurMechanicItem/>
+
+      <OurMechanicItem/>
+
+      <OurMechanicItem/>
+      
+      </Flex>
+    </VStack>
+  );
+
+}
+
+function OurMechanicItem(){
+  return (
+      <Card
+        className=""
+      > 
+
+
+      </Card>
   );
 }
 
