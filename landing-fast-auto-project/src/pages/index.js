@@ -414,6 +414,7 @@ function WhatWeDo(){
         gap={3}
         direction={{ base: "column", md: "row" }}
         mt={100}
+        bg={useColorModeValue("gray.100", "gray.700")}
       >
 
       <WhatWeDoItem/>
