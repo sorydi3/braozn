@@ -5,6 +5,7 @@ import { Container } from "postcss";
 
 //cancel icon
 import { FaTimes, FaCheck, FaEdit } from "react-icons/fa";
+import { motion } from 'framer-motion';
 import {
   Box,
   Button,
@@ -414,6 +415,7 @@ function JobCategories() {
       <Select
         placeholder="Select Job Category"
         size="lg"
+
         variant="flushed"
         isMulti
       >
@@ -526,10 +528,30 @@ function JobBost(props) {
         <JobTypes />
         <JobCategories />
         <Benefits />
-
         <JobDescriptionEditable description="Job Description" />
+        {postJobButton()}
       </Box>
     </Box>
+  );
+}
+
+function postJobButton() {
+  return (
+    <motion.Button
+      whileHover={{ scale: 1.06 }}
+      whileTap={{ scale: 0.9 }}
+    >
+    <Button
+      className="mt-10"
+      colorScheme="teal"
+      type="submit"
+      size="lg"
+      variant="solid"
+      width={"full"}
+    >
+      Post Job
+    </Button>
+    </motion.Button>
   );
 }
 
