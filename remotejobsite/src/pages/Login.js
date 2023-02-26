@@ -27,6 +27,7 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { async } from "@firebase/util";
+import { toast } from "react-hot-toast";
 
 function InputField({ type, placeholder, icon }) {
   const [showPassword, setShowPassword] = useState(true);
@@ -72,15 +73,8 @@ function Login(props) {
     await signInWithPopup(auth, provider2);
   };
 
-  useEffect(() => {
-    if (user) {
-      console.log("user", user);
-    } else {
-      console.log("no user");
-    }
-  }, [user]);
-
   if (user) {
+   
     Router.push("/");
   }
 
@@ -113,6 +107,14 @@ function Login(props) {
       </Flex>
     </Flex>
   );
+}
+
+async function getStaticProps() {
+  return {
+    props: {
+      title: "Login",
+    },
+  };
 }
 
 Login.propTypes = {};
